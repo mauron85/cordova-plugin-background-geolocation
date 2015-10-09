@@ -68,6 +68,10 @@ import android.util.Log;
 import android.widget.Toast;;
 import org.json.JSONException;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+
 import static java.lang.Math.*;
 
 public class LocationUpdateService extends Service implements LocationListener {
@@ -108,6 +112,9 @@ public class LocationUpdateService extends Service implements LocationListener {
     private Integer scaledDistanceFilter;
     private Integer locationTimeout = 30;
     private Boolean isDebugging;
+    private String notificationIconColor = "#4CAF50";
+    private String notificationIconColorDefault = "#4CAF50";
+    private String notificationIcon  = "notification_icon";
     private String notificationTitle = "Background checking";
     private String notificationText = "ENABLED";
     private Boolean stopOnTerminate;
@@ -196,6 +203,8 @@ public class LocationUpdateService extends Service implements LocationListener {
             desiredAccuracy = Integer.parseInt(intent.getStringExtra("desiredAccuracy"));
             locationTimeout = Integer.parseInt(intent.getStringExtra("locationTimeout"));
             isDebugging = Boolean.parseBoolean(intent.getStringExtra("isDebugging"));
+            notificationIconColor  = intent.getStringExtra("notificationIconColor");
+            notificationIcon  = intent.getStringExtra("notificationIcon");
             notificationTitle = intent.getStringExtra("notificationTitle");
             notificationText = intent.getStringExtra("notificationText");
             
@@ -213,10 +222,14 @@ public class LocationUpdateService extends Service implements LocationListener {
             main.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, main,  PendingIntent.FLAG_UPDATE_CURRENT);
 
+            Bitmap largeIcon = BitmapFactory.decodeResource(getApplication().getResources(), getPluginResource(notificationIcon + "_large"));
+            
             Notification.Builder builder = new Notification.Builder(this);
             builder.setContentTitle(notificationTitle);
             builder.setContentText(notificationText);
-            builder.setSmallIcon(android.R.drawable.ic_menu_mylocation);
+            builder.setSmallIcon(getPluginResource(notificationIcon + "_small"));
+            builder.setLargeIcon(largeIcon);
+            builder.setColor(this.parseNotificationIconColor(notificationIconColor));
             builder.setContentIntent(pendingIntent);
             builder.setContentIntent( PendingIntent.getActivity( this, 0,
                 new Intent( this, activityClass ), 0 ) );
@@ -237,6 +250,7 @@ public class LocationUpdateService extends Service implements LocationListener {
         Log.i(TAG, "- desiredAccuracy: "    + desiredAccuracy);
         Log.i(TAG, "- locationTimeout: "    + locationTimeout);
         Log.i(TAG, "- isDebugging: "        + isDebugging);
+        Log.i(TAG, "- notificationIcon: "  + notificationIcon);
         Log.i(TAG, "- notificationTitle: "  + notificationTitle);
         Log.i(TAG, "- notificationText: "   + notificationText);
         Log.i(TAG, "- activity: "   + activity);
@@ -245,6 +259,27 @@ public class LocationUpdateService extends Service implements LocationListener {
 
         //We want this service to continue running until it is explicitly stopped
         return START_REDELIVER_INTENT;
+    }
+    
+    public Integer getPluginResource(String resourceName) {
+        return getApplication().getResources().getIdentifier(resourceName, "drawable", getApplication().getPackageName());
+    }
+    
+    private Integer parseNotificationIconColor(String color) {
+        int iconColor = 0;
+        if (color != null) {
+            try {
+                iconColor = Color.parseColor(color);
+            } catch (IllegalArgumentException e) {
+                Log.e(TAG, "couldn't parse color from android options");
+            }
+        }
+        if (iconColor != 0) {
+           return iconColor;
+        }
+        else{
+	   return Color.parseColor(this.notificationIconColorDefault);
+        }
     }
 
     @TargetApi(16)

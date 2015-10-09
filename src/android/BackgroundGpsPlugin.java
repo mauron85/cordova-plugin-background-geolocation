@@ -60,6 +60,8 @@ public class BackgroundGpsPlugin extends CordovaPlugin {
     private String distanceFilter = "30";
     private String locationTimeout = "60";
     private String isDebugging = "false";
+    private String notificationIconColor  = "#4CAF50";
+    private String notificationIcon  = "notification_icon";
     private String notificationTitle = "Background tracking";
     private String notificationText = "ENABLED";
     private String stopOnTerminate = "false";
@@ -87,8 +89,10 @@ public class BackgroundGpsPlugin extends CordovaPlugin {
                 updateServiceIntent.putExtra("distanceFilter", distanceFilter);
                 updateServiceIntent.putExtra("locationTimeout", locationTimeout);
                 updateServiceIntent.putExtra("isDebugging", isDebugging);
+                updateServiceIntent.putExtra("notificationIcon", notificationIcon);
                 updateServiceIntent.putExtra("notificationTitle", notificationTitle);
                 updateServiceIntent.putExtra("notificationText", notificationText);
+                updateServiceIntent.putExtra("notificationIconColor", notificationIconColor);
                 updateServiceIntent.putExtra("stopOnTerminate", stopOnTerminate);
                 updateServiceIntent.putExtra("activity", cordova.getActivity().getClass().getCanonicalName());
                 Log.d( TAG, "Put activity " + cordova.getActivity().getClass().getCanonicalName() );
@@ -110,8 +114,8 @@ public class BackgroundGpsPlugin extends CordovaPlugin {
             try {
                 this.callbackContext = callbackContext;
                 // Params.
-                //    0       1       2           3               4                5               6            7           8                9               10              11
-                //[params, headers, url, stationaryRadius, distanceFilter, locationTimeout, desiredAccuracy, debug, notificationTitle, notificationText, activityType, stopOnTerminate]
+                //    0       1       2           3               4                5               6            7           8                9               10              11                12                  13
+                //[params, headers, url, stationaryRadius, distanceFilter, locationTimeout, desiredAccuracy, debug, notificationTitle, notificationText, activityType, stopOnTerminate, notificationIcon, notificationIconColor]
                 this.params = data.getString(0);
                 this.headers = data.getString(1);
                 this.url = data.getString(2);
@@ -122,6 +126,8 @@ public class BackgroundGpsPlugin extends CordovaPlugin {
                 this.isDebugging = data.getString(7);
                 this.notificationTitle = data.getString(8);
                 this.notificationText = data.getString(9);
+                this.notificationIcon = data.getString(12);
+                this.notificationIconColor = data.getString(13);
                 this.stopOnTerminate = data.getString(11);
                 Log.d(TAG, "bg service configured");
             } catch (JSONException e) {

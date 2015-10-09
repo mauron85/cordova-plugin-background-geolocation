@@ -93,6 +93,7 @@ A full example could be:
         distanceFilter: 30,
         notificationTitle: 'Background tracking', // <-- android only, customize the title of the notification
         notificationText: 'ENABLED', // <-- android only, customize the text of the notification
+        notificationIcon: 'notification_icon', // <-- android only, customize the notification icon
         activityType: 'AutomotiveNavigation',
         debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
         stopOnTerminate: false // <-- enable this to clear background location settings when the app terminates
@@ -216,9 +217,38 @@ Enable this in order to force a stop() when the application terminated (e.g. on 
 
 On Android devices it is required to have a notification in the drawer because it's a "foreground service".  This gives it high priority, decreasing probability of OS killing it.  To customize the title and text of the notification, set these options.
 
-#####`@param {Integer} locationTimeout
+#####`@param {Integer} locationTimeout`
 
 The minimum time interval between location updates, in seconds.  See [Android docs](http://developer.android.com/reference/android/location/LocationManager.html#requestLocationUpdates(long,%20float,%20android.location.Criteria,%20android.app.PendingIntent)) for more information.
+
+#####`@param {String} notificationIcon`
+
+Optional: the filename of a custom notification icon. The icon must be located in the *res/drawable* directory. You should include a small and large icon (append "\_small" and "\_large" to the end of your image filenames). Omit the small and large when passing notificationIcon to configure. This will default to "notification_icon".
+
+To use custom notification icon eg. new_icon, you need to:
+
+##### 1. Configure plugin
+```
+bgGeo.configure(callbackFn, failureFn, {
+    //... add other config options
+    notificationIcon: 'new_icon'
+    //... add other config options
+});
+```
+
+##### 2. Copy icon files
+Add your custom *new_icon_small.png* and *new_icon_large.png* to res/drawable directory.
+
+##### 3. Register icons in plugin.xml source-file.
+```
+<source-file src="res/drawable/new_icon_small.png" target-dir="res/drawable" />
+<source-file src="res/drawable/new_icon_large.png" target-dir="res/drawable" />
+```
+
+#####`@param {String} notificationIconColor`
+
+Optional: the color of notification icon. Android add a background color to the small icon that is shown as badge or as full icon when the screen is locked.
+The default color is green (#4CAF50). The format is HTML color code.
 
 ### iOS Config
 
@@ -234,7 +264,7 @@ In Windows Phone, the underlying GeoLocator you can choose to use 'DesiredAccura
 
 ## Development
 
-There are many works of original christocracy's plugin. The most interesting repos I've found are: 
+There are many works of original christocracy's plugin. The most interesting repos I've found are:
 * [huttj](https://github.com/huttj/cordova-plugin-background-geolocation)
 * [erikkemperman](https://github.com/erikkemperman/cordova-plugin-background-geolocation/)
 * [codebling](https://github.com/codebling/cordova-plugin-background-geolocation)
@@ -245,12 +275,15 @@ this version and adopt all those cool changes. You're more then welcome to pull 
 ## Changelog
 
 ### [0.4.3] - unreleased
+### Added
+- Android Add icon color parameter
+
 ### Changed
 - Changed the plugin.xml dependencies to the new NPM-based plugin syntax
 
 ### [0.4.2] - 2015-09-30
 #### Added
-- Android open activity when notification clicked [69989e79a8a67485fc88463eec8d69bb713c2dbe](https://github.com/erikkemperman/cordova-plugin-background-geolocation/commit/69989e79a8a67485fc88463eec8d69bb713c2dbe) 
+- Android open activity when notification clicked [69989e79a8a67485fc88463eec8d69bb713c2dbe](https://github.com/erikkemperman/cordova-plugin-background-geolocation/commit/69989e79a8a67485fc88463eec8d69bb713c2dbe)
 
 #### Fixed
 - Android duplicate desiredAccuracy extra

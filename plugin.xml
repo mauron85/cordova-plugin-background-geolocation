@@ -1,62 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    id="cordova-plugin-mauron85-background-geolocation"
-    version="0.4.3">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-mauron85-background-geolocation"
+        version="0.4.3">
     <name>CDVBackgroundGeoLocation</name>
     <description>Cordova Background GeoLocation Plugin</description>
     <license>Apache</license>
     <keywords>phonegap,background geolocation</keywords>
 
     <engines>
-        <engine name="cordova" version=">=3.0.0" />
+        <engine name="cordova" version=">=3.0.0"/>
     </engines>
 
-    <dependency id="org.apache.cordova.geolocation" />
-    <dependency id="org.apache.cordova.dialogs" />
+    <dependency id="org.apache.cordova.geolocation"/>
+    <dependency id="org.apache.cordova.dialogs"/>
 
     <js-module src="www/BackgroundGeoLocation.js" name="BackgroundGeoLocation">
-        <clobbers target="plugins.backgroundGeoLocation" />
+        <clobbers target="plugins.backgroundGeoLocation"/>
     </js-module>
 
     <!-- android -->
     <platform name="android">
-        <source-file src="src/android/Constant.java" target-dir="src/com/marianhello/cordova/bgloc/Constant.java" />
-        <source-file src="src/android/BackgroundGpsPlugin.java" target-dir="src/com/marianhello/cordova/bgloc" />
-        <source-file src="src/android/LocationUpdateService.java" target-dir="src/com/marianhello/cordova/bgloc" />
-        <source-file src="src/android/data/DAOFactory.java" target-dir="src/com/marianhello/cordova/bgloc/data" />
-        <source-file src="src/android/data/Location.java" target-dir="src/com/marianhello/cordova/bgloc/data" />
-        <source-file src="src/android/data/LocationDAO.java" target-dir="src/com/marianhello/cordova/bgloc/data" />
-        <source-file src="src/android/data/sqlite/LocationOpenHelper.java" target-dir="src/com/marianhello/cordova/bgloc/data/sqlite" />
-        <source-file src="src/android/data/sqlite/SQLiteLocationDAO.java" target-dir="src/com/marianhello/cordova/bgloc/data/sqlite" />
+        <source-file src="src/android/Constant.java" target-dir="src/com/marianhello/cordova/bgloc/Constant.java"/>
+        <source-file src="src/android/BackgroundGpsPlugin.java" target-dir="src/com/marianhello/cordova/bgloc"/>
+        <source-file src="src/android/LocationUpdateService.java" target-dir="src/com/marianhello/cordova/bgloc"/>
+        <source-file src="src/android/data/DAOFactory.java" target-dir="src/com/marianhello/cordova/bgloc/data"/>
+        <source-file src="src/android/data/Location.java" target-dir="src/com/marianhello/cordova/bgloc/data"/>
+        <source-file src="src/android/data/LocationDAO.java" target-dir="src/com/marianhello/cordova/bgloc/data"/>
+        <source-file src="src/android/data/sqlite/LocationOpenHelper.java"
+                     target-dir="src/com/marianhello/cordova/bgloc/data/sqlite"/>
+        <source-file src="src/android/data/sqlite/SQLiteLocationDAO.java"
+                     target-dir="src/com/marianhello/cordova/bgloc/data/sqlite"/>
 
-        <source-file src="src/android/notification.png" target-dir="res/drawable" />
+        <source-file src="src/android/notification_icon_small.png" target-dir="res/drawable"/>
+        <source-file src="src/android/notification_icon_large.png" target-dir="res/drawable"/>
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <service android:enabled="true" android:name="com.marianhello.cordova.bgloc.LocationUpdateService" android:process=":remote">
+            <service android:enabled="true" android:name="com.marianhello.cordova.bgloc.LocationUpdateService"
+                     android:process=":remote">
                 <intent-filter>
-                    <action android:name="com.marianhello.cordova.bgloc.communication.REQUEST_PROCESSED" />
+                    <action android:name="com.marianhello.cordova.bgloc.communication.REQUEST_PROCESSED"/>
                 </intent-filter>
             </service>
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
-            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-            <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-            <uses-permission android:name="android.permission.INTERNET" />
-            <uses-permission android:name="android.permission.WAKE_LOCK" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+            <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.WAKE_LOCK"/>
         </config-file>
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="BackgroundGeoLocation">
                 <param name="android-package" value="com.marianhello.cordova.bgloc.BackgroundGpsPlugin"/>
             </feature>
         </config-file>
-     </platform>
+    </platform>
 
-     <platform name="ios">
+    <platform name="ios">
         <!-- required background modes:  App registers for location updates -->
 
         <config-file target="*-Info.plist" parent="NSLocationAlwaysUsageDescription">
@@ -74,35 +78,35 @@
                 <param name="ios-package" value="CDVBackgroundGeoLocation"/>
             </feature>
         </config-file>
-        <framework src="AudioToolbox.framework" weak="true" />
-        <framework src="AVFoundation.framework" weak="true" />
-        <source-file src="src/ios/CDVBackgroundGeoLocation.m" />
-        <header-file src="src/ios/CDVBackgroundGeoLocation.h" />
-     </platform>
+        <framework src="AudioToolbox.framework" weak="true"/>
+        <framework src="AVFoundation.framework" weak="true"/>
+        <source-file src="src/ios/CDVBackgroundGeoLocation.m"/>
+        <header-file src="src/ios/CDVBackgroundGeoLocation.h"/>
+    </platform>
 
-	<!-- wp8 -->
-	<platform name="wp8">
-		<config-file target="config.xml" parent="/*">
-			<feature name="BackgroundGeoLocation">
-				<param name="wp-package" value="BackgroundGeoLocation" onload="true" />
-				<param name="onload" value="true" />
-			</feature>
-		</config-file>
+    <!-- wp8 -->
+    <platform name="wp8">
+        <config-file target="config.xml" parent="/*">
+            <feature name="BackgroundGeoLocation">
+                <param name="wp-package" value="BackgroundGeoLocation" onload="true"/>
+                <param name="onload" value="true"/>
+            </feature>
+        </config-file>
 
-		<config-file target="Properties/WMAppManifest.xml" parent="/Deployment/App/Tasks/DefaultTask">
-			<BackgroundExecution>
-				<ExecutionType Name="LocationTracking" />
-			</BackgroundExecution>
-		</config-file>
+        <config-file target="Properties/WMAppManifest.xml" parent="/Deployment/App/Tasks/DefaultTask">
+            <BackgroundExecution>
+                <ExecutionType Name="LocationTracking"/>
+            </BackgroundExecution>
+        </config-file>
 
-		<config-file target="Properties/WMAppManifest.xml" parent="/Deployment/App/Capabilities">
-			<Capability Name="ID_CAP_LOCATION" />
-		</config-file>
-		<source-file src="src/wp8/BackgroundGeoLocation.cs" />
-		<source-file src="src/wp8/BackgroundGeoLocationOptions.cs" />
-		<source-file src="src/wp8/DebugAudioNotifier.cs" />
-		<source-file src="src/wp8/ExtensionMethods.cs" />
-		<source-file src="src/wp8/IBackgroundGeoLocation.cs" />
-	</platform>
+        <config-file target="Properties/WMAppManifest.xml" parent="/Deployment/App/Capabilities">
+            <Capability Name="ID_CAP_LOCATION"/>
+        </config-file>
+        <source-file src="src/wp8/BackgroundGeoLocation.cs"/>
+        <source-file src="src/wp8/BackgroundGeoLocationOptions.cs"/>
+        <source-file src="src/wp8/DebugAudioNotifier.cs"/>
+        <source-file src="src/wp8/ExtensionMethods.cs"/>
+        <source-file src="src/wp8/IBackgroundGeoLocation.cs"/>
+    </platform>
 
 </plugin>
