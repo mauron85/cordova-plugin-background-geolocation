@@ -142,6 +142,10 @@ public class LocationService extends Service {
             config = new Config();
         }
 
+        if (provider != null) {
+            provider.onDestroy();
+        }
+
         LocationProviderFactory spf = new LocationProviderFactory(this);
         provider = spf.getInstance(config.getLocationProvider());
 
