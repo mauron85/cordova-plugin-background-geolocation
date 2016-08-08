@@ -182,9 +182,9 @@ NSString *databasePath;
 
 -(NSString *) getDatabasePath
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *databasePath = [[NSString alloc]initWithString:[documentsDirectory stringByAppendingPathComponent:@DATABASE_FILENAME]];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    NSString *libraryDirectory = [paths objectAtIndex:0];
+    NSString *databasePath = [[NSString alloc]initWithString:[libraryDirectory stringByAppendingPathComponent:@DATABASE_FILENAME]];
 
     return databasePath;
 }
