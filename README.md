@@ -177,6 +177,7 @@ Following options are specific to provider as defined by locationProvider option
 | `fastestInterval`     | `Number`  | Android  | Fastest rate in milliseconds at which your app can handle location updates. **@see** [android  docs](https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest.html#getFastestInterval()). |
 | `activitiesInterval`  | `Number`  | Android  | Rate in milliseconds at which activity recognition occurs. Larger values will result in fewer activity detections while improving battery life.                                                                                  |
 | `stopOnStillActivity` | `Boolean` | Android  | stop() is forced, when the STILL activity is detected (default is true)                                                                                                                                                          |
+| `stopOnStillMinAccuracy` | `Number` | Android  | stop() from stopOnStillActivity is only forced, when the last location update accuracy is <= this value. "0" = disabled so stop() is always forced when STILL activity is detected (default: 0)                                                                                                                                                           |
 
 Success callback will be called with one argument - location object, which tries to mimic w3c [Coordinates interface](http://dev.w3.org/geo/api/spec-source.html#coordinates_interface).
 
