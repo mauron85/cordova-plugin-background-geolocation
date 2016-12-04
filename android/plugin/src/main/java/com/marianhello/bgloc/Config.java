@@ -51,6 +51,7 @@ public class Config implements Parcelable
     private Boolean startOnBoot = false;
     private Boolean startForeground = true;
     private Boolean stopOnStillActivity = true;
+    private Integer stopOnStillMinAccuracy = 0; // 0 = disabled
     private String url;
     private String syncUrl;
     private Integer syncThreshold = 100;
@@ -83,6 +84,7 @@ public class Config implements Parcelable
         out.writeInt(getFastestInterval());
         out.writeInt(getActivitiesInterval());
         out.writeValue(getStopOnStillActivity());
+        out.writeInt(getStopOnStillMinAccuracy());
         out.writeString(getUrl());
         out.writeString(getSyncUrl());
         out.writeInt(getSyncThreshold());
@@ -121,6 +123,7 @@ public class Config implements Parcelable
         setFastestInterval(in.readInt());
         setActivitiesInterval(in.readInt());
         setStopOnStillActivity((Boolean) in.readValue(null));
+        setStopOnStillMinAccuracy(in.readInt());
         setUrl(in.readString());
         setSyncUrl(in.readString());
         setSyncThreshold(in.readInt());
@@ -263,6 +266,14 @@ public class Config implements Parcelable
         return stopOnStillActivity;
     }
 
+    public Integer getStopOnStillMinAccuracy() {
+        return stopOnStillMinAccuracy;
+    }
+
+    public void setStopOnStillMinAccuracy(Integer stopOnStillMinAccuracy) {
+        this.stopOnStillMinAccuracy = stopOnStillMinAccuracy;
+    }
+    
     public void setStopOnStillActivity(Boolean stopOnStillActivity) {
         this.stopOnStillActivity = stopOnStillActivity;
     }
@@ -341,6 +352,7 @@ public class Config implements Parcelable
                 .append(" isDebugging=").append(isDebugging())
                 .append(" stopOnTerminate=" ).append(getStopOnTerminate())
                 .append(" stopOnStillActivity=").append(getStopOnStillActivity())
+                .append(" stopOnStillMinAccuracy=").append(getStopOnStillMinAccuracy())
                 .append(" startOnBoot=").append(getStartOnBoot())
                 .append(" startForeground=").append(getStartForeground())
                 .append(" locationProvider=").append(getLocationProvider())
@@ -391,6 +403,7 @@ public class Config implements Parcelable
         config.setSmallNotificationIcon(jObject.optString("notificationIconSmall", config.getSmallNotificationIcon()));
         config.setStartForeground(jObject.optBoolean("startForeground", config.getStartForeground()));
         config.setStopOnStillActivity(jObject.optBoolean("stopOnStillActivity", config.getStopOnStillActivity()));
+        config.setStopOnStillMinAccuracy(jObject.optInt("stopOnStillMinAccuracy", config.getStopOnStillMinAccuracy()));
         config.setUrl(jObject.optString("url"));
         config.setSyncUrl(jObject.optString("syncUrl"));
         config.setSyncThreshold(jObject.optInt("syncThreshold", config.getSyncThreshold()));
@@ -419,6 +432,7 @@ public class Config implements Parcelable
         json.put("fastestInterval", getFastestInterval());
         json.put("activitiesInterval", getActivitiesInterval());
         json.put("stopOnStillActivity", getStopOnStillActivity());
+        json.put("stopOnStillMinAccuracy", getStopOnStillMinAccuracy());
         json.put("url", getUrl());
         json.put("syncUrl", getSyncUrl());
         json.put("syncThreshold", getSyncThreshold());
