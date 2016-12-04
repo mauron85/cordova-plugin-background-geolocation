@@ -66,13 +66,25 @@ public class ActivityRecognitionLocationProvider extends AbstractLocationProvide
         log.debug("Location change: {}", location.toString());
 
         if (lastActivity.getType() == DetectedActivity.STILL) {
-            handleStationary(location);
-            stopTracking();
-            return;
-        }
 
-        if (config.isDebugging()) {
-            Toast.makeText(locationService, "acy:" + location.getAccuracy() + ",v:" + location.getSpeed() + ",df:" + config.getDistanceFilter(), Toast.LENGTH_LONG).show();
+            if ((config.getStopOnStillMinAccuracy() == 0) || (location.getAccuracy() <= config.getStopOnStillMinAccuracy())) { // stopOnStillMinAccuracy is defined && last accuracy fits
+                if (config.isDebugging()) {
+                    Toast.makeText(locationService, "STILL" + ", acc: " + location.getAccuracy(), Toast.LENGTH_SHORT).show();
+                }
+                handleStationary(location);
+                stopTracking();
+                return;
+
+            } else {    // stopOnStillMinAccuracy disabled || last accuracy to unprecise
+                if (config.isDebugging()) {
+                    Toast.makeText(locationService, "STILL" + ", acc: " + location.getAccuracy() +  " > " + config.getStopOnStillMinAccuracy()+ ", ignoreStationary", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        } else {
+            if (config.isDebugging()) {
+                Toast.makeText(locationService, "acy:" + location.getAccuracy() + ",v:" + location.getSpeed() + ",df:" + config.getDistanceFilter(), Toast.LENGTH_LONG).show();
+            }
         }
 
         // if (lastLocation != null && location.distanceTo(lastLocation) < config.getDistanceFilter()) {
