@@ -220,7 +220,7 @@ Platform: Android >= 6, iOS >= 8.0
 Show app settings to allow change of app location permissions.
 
 ### showLocationSettings()
-Platform: iOS, Android
+Platform: iOS < 10.0, Android
 
 Show system settings to allow configuration of current location sources.
 
