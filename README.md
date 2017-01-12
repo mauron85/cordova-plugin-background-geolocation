@@ -382,14 +382,14 @@ backgroundGeolocation.isLocationEnabled(function (enabled) {
 
 All locations updates are recorded in local db at all times. When App is in foreground or background in addition to storing location in local db, location callback function is triggered. Number of location stored in db is limited by `option.maxLocations` a never exceeds this number. Instead old locations are replaced by new ones.
 
-When `option.url` is defined, each location is also immediately posted to url defined by `option.url`. If post is successful, the location is marked as deleted in local db. All failed to post locations will be coalesced and send in some time later in one single batch. Batch sync takes place only when number of failed to post locations reaches `option.syncTreshold`.
+When `option.url` is defined, each location is also immediately posted to url defined by `option.url`. If post is successful, the location is marked as deleted in local db. All failed to post locations will be coalesced and send in some time later in one single batch. Batch sync takes place only when number of failed to post locations reaches `option.syncThreshold`.
 Optionally different url for batch sync can be defined by `option.syncUrl`. If `option.syncUrl` is not set then `option.url` will be used instead.
 
-When only `option.syncUrl` is defined. Locations are send only in single batch, when number of locations reaches `option.syncTreshold`. (No individual location will be send)
+When only `option.syncUrl` is defined. Locations are send only in single batch, when number of locations reaches `option.syncThreshold`. (No individual location will be send)
 
 Request body of posted locations is always array, even when only one location is sent.
 
-Warning: `option.maxLocations` has to be larger than `option.syncTreshold`. It's recommended to be 2x larger. In other case location syncing might not work properly.
+Warning: `option.maxLocations` has to be larger than `option.syncThreshold`. It's recommended to be 2x larger. In other case location syncing might not work properly.
 
 ### Example of express (nodejs) server
 ```javascript
