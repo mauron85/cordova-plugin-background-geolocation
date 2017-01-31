@@ -4,7 +4,7 @@
 
 Cross-platform geolocation for Cordova / PhoneGap with battery-saving "circular region monitoring" and "stop detection".
 
-Plugin can be used for geolocation when app is running in foreground or background. It is more battery and data efficient then html5 geolocation or cordova-geolocation plugin. It can be used side by side with other geolocation providers (eg. html5 navigator.geolocation).
+Plugin can be used for geolocation when app is running in foreground or background. It is more battery and data efficient than html5 geolocation or cordova-geolocation plugin. It can be used side by side with other geolocation providers (eg. html5 navigator.geolocation).
 
 On Android you can choose from two location location providers:
 * **ANDROID_DISTANCE_FILTER_PROVIDER** (forked from [cordova-plugin-background-geolocation](https://github.com/christocracy/cordova-plugin-background-geolocation))
