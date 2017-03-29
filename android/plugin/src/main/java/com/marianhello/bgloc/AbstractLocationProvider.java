@@ -49,12 +49,22 @@ public abstract class AbstractLocationProvider implements LocationProvider {
     }
 
     public void onCreate() {
-        toneGenerator = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
+        try{
+            toneGenerator = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void onDestroy() {
-        toneGenerator.release();
-        toneGenerator = null;
+        try{
+            toneGenerator.release();
+            toneGenerator = null;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -140,6 +150,8 @@ public abstract class AbstractLocationProvider implements LocationProvider {
                 break;
         }
 
-        toneGenerator.startTone(tone, duration);
+        if (toneGenerator != null){
+            toneGenerator.startTone(tone, duration);
+        }
     }
 }
