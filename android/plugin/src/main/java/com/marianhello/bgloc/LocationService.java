@@ -196,7 +196,7 @@ public class LocationService extends Service {
     @Override
     public void onTaskRemoved(Intent rootIntent) {
         log.debug("Task has been removed");
-        if (config != null && config.getStopOnTerminate()) {
+        if (config.getStopOnTerminate()) {
             log.info("Stopping self");
             stopSelf();
         } else {
