@@ -562,7 +562,7 @@ backgroundGeolocation.getLogEntries(100, printIosLogs);
 ```
 
 ### Debugging sounds
-| *ios*                               | *android*                         |                         |
+|                                     | *ios*                             | *android*               |
 |-------------------------------------|-----------------------------------|-------------------------|
 | Exit stationary region              | Calendar event notification sound | dialtone beep-beep-beep |
 | Geolocation recorded                | SMS sent sound                    | tt short beep           |
