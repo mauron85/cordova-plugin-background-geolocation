@@ -23,6 +23,8 @@ See [Which provider should I use?](https://github.com/mauron85/cordova-plugin-ba
 
 Checkout repository [cordova-plugin-background-geolocation-example](https://github.com/mauron85/cordova-plugin-background-geolocation-example).
 
+For Ionic 2 project, checkout repository [mauron85-background-geolocation-example-ionic2](https://github.com/oliviercherrier/mauron85-background-geolocation-example-ionic2).
+
 ## Submitting issues
 
 All new issues should follow instructions in [ISSUE_TEMPLATE.md](https://raw.githubusercontent.com/mauron85/cordova-plugin-background-geolocation/master/ISSUE_TEMPLATE.md).
