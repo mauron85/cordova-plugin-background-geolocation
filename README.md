@@ -48,7 +48,9 @@ cordova plugin add cordova-plugin-mauron85-background-geolocation
 Default iOS location permission prompt can be changed in your config.xml:
 ```
 <plugin name="cordova-plugin-mauron85-background-geolocation">
-    <variable name="ALWAYS_USAGE_DESCRIPTION" value="This app requires background tracking enabled" />
+    <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="This app requires background tracking enabled" />
+    <variable name="LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION" value="This app requires background tracking enabled" />
+    <variable name="LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION" value="Always use is required for background location tracking" />
 </plugin>
 ```
 

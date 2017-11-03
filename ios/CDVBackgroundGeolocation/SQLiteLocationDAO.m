@@ -261,7 +261,7 @@
             return;
         } else if (rowCount > maxRows) {
             sql = [NSString stringWithFormat:@"DELETE FROM %1$@ WHERE %2$@ IN (SELECT %2$@ FROM %1$@ ORDER BY %3$@ LIMIT %4$ld);VACUUM;",
-                   @LC_TABLE_NAME, @LC_COLUMN_NAME_ID, @LC_COLUMN_NAME_TIME, (rowCount - maxRows)];
+                  @LC_TABLE_NAME, @LC_COLUMN_NAME_ID, @LC_COLUMN_NAME_TIME, (long)(rowCount - maxRows)];
             if (![database executeStatements:sql]) {
                 NSLog(@"%@ failed code: %d: message: %@", sql, [database lastErrorCode], [database lastErrorMessage]);
             }

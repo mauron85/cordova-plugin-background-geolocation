@@ -28,7 +28,10 @@
 
 + (instancetype) fromCLLocation:(CLLocation*)location;
 + (NSTimeInterval) locationAge:(CLLocation*)location;
-+ (NSMutableDictionary*) toDictionary:(CLLocation*)location;;
++ (NSMutableDictionary*) toDictionary:(CLLocation*)location;
++ (NSData *)sendSynchronousRequest:(NSURLRequest *)request
+                 returningResponse:(__autoreleasing NSURLResponse **)responsePtr
+                             error:(__autoreleasing NSError **)errorPtr;
 - (NSTimeInterval) locationAge;
 - (NSMutableDictionary*) toDictionary;
 - (NSMutableDictionary*) toDictionaryWithId;

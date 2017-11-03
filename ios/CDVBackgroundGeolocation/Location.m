@@ -204,7 +204,7 @@ enum {
     return [NSString stringWithFormat:@"Location: id=%ld time=%ld lat=%@ lon=%@ accu=%@ aaccu=%@ speed=%@ bear=%@ alt=%@ type=%@", (long)id, (long)time, latitude, longitude, accuracy, altitudeAccuracy, speed, heading, altitude, type];
 }
 
-- (BOOL) postAsJSON:(NSString*)url withHttpHeaders:(NSMutableDictionary*)httpHeaders error:(NSError * __autoreleasing *)outError;
+- (BOOL) postAsJSON:(NSString*)url withHttpHeaders:(NSMutableDictionary*)httpHeaders error:(NSError * __autoreleasing *)outError
 {
     NSArray *locations = [[NSArray alloc] initWithObjects:[self toDictionary], nil];
     //    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
@@ -225,15 +225,47 @@ enum {
     }
     [request setHTTPBody:[jsonStr dataUsingEncoding:NSUTF8StringEncoding]];
     
-    // Create url connection and fire request
+    // Fire http request
     NSHTTPURLResponse* urlResponse = nil;
-    [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:outError];
+    [Location sendSynchronousRequest:request returningResponse:&urlResponse error:outError];
     
     if (*outError == nil && [urlResponse statusCode] == 200) {
         return YES;
     }
     
     return NO;
+}
+
+/***
+ * Synchronous method to perform http request
+ */
++ (NSData *) sendSynchronousRequest:(NSURLRequest *)request
+                  returningResponse:(__autoreleasing NSURLResponse **)responsePtr
+                              error:(__autoreleasing NSError **)errorPtr {
+    dispatch_semaphore_t    sem;
+    __block NSData *        result;
+
+    result = nil;
+
+    sem = dispatch_semaphore_create(0);
+
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request
+                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                         if (errorPtr != NULL) {
+                                             *errorPtr = error;
+                                         }
+                                         if (responsePtr != NULL) {
+                                             *responsePtr = response;
+                                         }
+                                         if (error == nil) {
+                                             result = data;
+                                         }
+                                         dispatch_semaphore_signal(sem);
+                                     }] resume];
+
+    dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);
+
+    return result;
 }
 
 -(id) copyWithZone: (NSZone *) zone

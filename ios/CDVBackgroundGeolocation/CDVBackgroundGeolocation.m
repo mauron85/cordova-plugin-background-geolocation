@@ -273,7 +273,7 @@
     
     if ([dict objectForKey:UIApplicationLaunchOptionsLocationKey]) {
         DDLogInfo(@"CDVBackgroundGeolocation started by system on location event.");
-//        [manager switchOperationMode:BACKGROUND];
+        [manager startMonitoringLocationWhenSuspended];
     }
 }
 
