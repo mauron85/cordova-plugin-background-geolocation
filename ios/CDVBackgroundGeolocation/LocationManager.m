@@ -1,4 +1,4 @@
-////
+//
 //  LocationManager
 //
 //  Created by Marian Hello on 04/06/16.
@@ -38,7 +38,7 @@
 #define LOCATION_RESTRICTED     "Application's use of location services is restricted."
 #define LOCATION_NOT_DETERMINED "User undecided on application's use of location services."
 
-static NSString * const Domain = @"com.marianhello";
+static NSString * const Domain = @"com.saralweb";
 
 enum {
     maxLocationWaitTimeInSeconds = 15,

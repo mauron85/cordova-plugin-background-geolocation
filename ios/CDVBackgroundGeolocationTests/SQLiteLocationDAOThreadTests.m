@@ -40,7 +40,7 @@
     SQLiteLocationDAO *locationDAO = [SQLiteLocationDAO sharedInstance];
     long unsigned threadsCount = 100;
     
-    dispatch_queue_t queue = dispatch_queue_create("com.marianhello.SQLiteLocationDAOThreadTests", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_queue_t queue = dispatch_queue_create("com.saralweb.SQLiteLocationDAOThreadTests", DISPATCH_QUEUE_CONCURRENT);
     dispatch_group_t group = dispatch_group_create();
     
     for (int i = 0; i < threadsCount; i++) {
