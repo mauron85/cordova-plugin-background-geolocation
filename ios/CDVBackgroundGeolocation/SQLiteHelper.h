@@ -21,9 +21,9 @@ typedef NS_ENUM(NSInteger, SQLType) {
 
 
 @interface SQLColumnType : NSObject
-{
-@protected enum SQLType type;
-}
+/*{
+@protected enum SQLType type; // Remark: instead of this, 'SQLColumnType' implementation will use instance variable 'type'.
+}*/
 
 
 @property enum SQLType type;

@@ -1,9 +1,9 @@
 {
-  "name": "cordova-plugin-mauron85-background-geolocation",
-  "version": "2.3.1",
+  "name": "cordova-plugin-saralweb-background-geolocation",
+  "version": "2.4.0",
   "description": "Cordova Background Geolocation Plugin",
   "cordova": {
-    "id": "cordova-plugin-mauron85-background-geolocation",
+    "id": "cordova-plugin-saralweb-background-geolocation",
     "platforms": [
       "android",
       "ios"
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mauron85/cordova-plugin-background-geolocation.git"
+    "url": "git+https://github.com/saralweb/cordova-plugin-background-geolocation.git"
   },
   "keywords": [
     "gps",
@@ -33,7 +33,7 @@
   "author": "",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/mauron85/cordova-plugin-background-geolocation/issues"
+    "url": "https://github.com/saralweb/cordova-plugin-background-geolocation/issues"
   },
-  "homepage": "https://github.com/mauron85/cordova-plugin-background-geolocation#readme"
+  "homepage": "https://github.com/saralweb/cordova-plugin-background-geolocation#readme"
 }

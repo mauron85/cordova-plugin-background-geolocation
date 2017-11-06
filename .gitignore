@@ -1,5 +1,9 @@
 # prevent accidental commits by exclude everything
 /*
+**/.DS_Store
+**/**/project.xcworkspace
+**/**/xcuserdata
+*.swp
 
 # only include project files
 !/.npmignore

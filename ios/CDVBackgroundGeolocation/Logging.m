@@ -25,7 +25,7 @@
         return nil;
     }
 
-    NSString *sql = [NSString stringWithFormat:@"SELECT context,level,message,timestamp FROM logs ORDER BY timestamp DESC LIMIT %ld", limit];
+    NSString *sql = [NSString stringWithFormat:@"SELECT context,level,message,timestamp FROM logs ORDER BY timestamp DESC LIMIT %ld", (long)limit];
     FMResultSet *rs = [database executeQuery:sql];
     while([rs next]) {
         NSMutableDictionary *entry = [NSMutableDictionary dictionaryWithCapacity:4];

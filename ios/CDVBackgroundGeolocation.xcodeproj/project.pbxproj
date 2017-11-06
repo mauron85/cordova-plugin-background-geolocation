@@ -310,7 +310,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = mauron85;
+				ORGANIZATIONNAME = Saralweb;
 				TargetAttributes = {
 					411675431D282BB6004BC2F4 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -565,7 +565,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				INFOPLIST_FILE = CDVBackgroundGeolocationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.marianhello.CDVBackgroundGeolocationTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.saralweb.CDVBackgroundGeolocationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -576,7 +576,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				INFOPLIST_FILE = CDVBackgroundGeolocationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.marianhello.CDVBackgroundGeolocationTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.saralweb.CDVBackgroundGeolocationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

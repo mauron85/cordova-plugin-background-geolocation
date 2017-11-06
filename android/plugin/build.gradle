@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        applicationId "com.marianhello.cdvbackgroundgeolocation"
+        applicationId "com.saralweb.cdvbackgroundgeolocation"
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 1

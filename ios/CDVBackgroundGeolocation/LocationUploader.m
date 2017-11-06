@@ -24,7 +24,7 @@
 {
     if(!(self = [super init])) return nil;
     
-    NSURLSessionConfiguration *conf = [NSURLSessionConfiguration backgroundSessionConfiguration:@"com.marianhello.session"];
+    NSURLSessionConfiguration *conf = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"com.saralweb.session"];
     conf.allowsCellularAccess = YES;
     urlSession = [NSURLSession sessionWithConfiguration:conf delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     

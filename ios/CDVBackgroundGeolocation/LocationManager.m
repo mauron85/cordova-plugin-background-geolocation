@@ -1,4 +1,4 @@
-////
+//
 //  LocationManager
 //
 //  Created by Marian Hello on 04/06/16.
@@ -38,7 +38,7 @@
 #define LOCATION_RESTRICTED     "Application's use of location services is restricted."
 #define LOCATION_NOT_DETERMINED "User undecided on application's use of location services."
 
-static NSString * const Domain = @"com.marianhello";
+static NSString * const Domain = @"com.saralweb";
 
 enum {
     maxLocationWaitTimeInSeconds = 15,
@@ -54,6 +54,7 @@ enum {
     BOOL isAcquiringStationaryLocation;
     BOOL isAcquiringSpeed;
     BOOL hasConnectivity;
+    BOOL isAppTerminating;
 
     BGOperationMode operationMode;
     NSDate *aquireStartTime;
@@ -127,6 +128,7 @@ enum {
     hasConnectivity = YES;
     //    shouldStart = NO;
     stationaryRegion = nil;
+    isAppTerminating = NO;
 
     return self;
 }
@@ -148,7 +150,7 @@ enum {
     DDLogVerbose(@"LocationManager configure");
     _config = config;
 
-    DDLogDebug(@"%@", config);
+    DDLogDebug(@"config: %@", config);
 
     locationManager.pausesLocationUpdatesAutomatically = _config.pauseLocationUpdates;
     locationManager.activityType = [_config decodeActivityType];
@@ -258,6 +260,15 @@ enum {
     return YES;
 }
 
+/***
+ * Start monitoring location when app has been started by system on location event
+ */
+- (void) startMonitoringLocationWhenSuspended {
+    // Set isStarted flag to YES to signify that location monitoring has been started
+    isStarted = YES;
+    [self switchMode:BACKGROUND];
+}
+
 /**
  * toggle between foreground and background operation mode
  */
@@ -273,7 +284,7 @@ enum {
         AudioServicesPlaySystemSound (operationMode  == FOREGROUND ? paceChangeYesSound : paceChangeNoSound);
     }
 
-    if (operationMode == FOREGROUND || !_config.saveBatteryOnBackground) {
+    if (operationMode == FOREGROUND || (!_config.saveBatteryOnBackground && !isAppTerminating)) {
         isAcquiringSpeed = YES;
         isAcquiringStationaryLocation = NO;
         [self stopMonitoringForRegion];
@@ -802,6 +813,7 @@ enum {
         DDLogInfo(@"LocationManager is stopping on app terminate.");
         [self stop:nil];
     } else {
+        isAppTerminating = YES;
         [self switchMode:BACKGROUND];
     }
 }

@@ -1,6 +1,7 @@
-Many thanks to all contributors and special thanks to [christocracy](https://github.com/christocracy) as former autor.
+Many thanks to all contributors.
 
 * [christocracy](https://github.com/christocracy)
+* [mauron85](https://github.com/mauron85)
 * [huttj](https://github.com/huttj)
 * [erikkemperman](https://github.com/erikkemperman)
 * [codebling](https://github.com/codebling)
@@ -8,3 +9,4 @@ Many thanks to all contributors and special thanks to [christocracy](https://git
 * [nevyn](https://github.com/nevyn)
 * [unixmonkey](https://github.com/unixmonkey)
 * [Arakaki-Yuji](https://github.com/Arakaki-Yuji)
+* [saralweb](https://github.com/saralweb)

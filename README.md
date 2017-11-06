@@ -1,31 +1,25 @@
-# cordova-plugin-mauron85-background-geolocation
-
-## Donation
-
-Please support my work and support continuous development by your donation.
-
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KTUXQQD85F666)
+# cordova-plugin-saralweb-background-geolocation
 
 
 ## Description
 
-Cross-platform geolocation for Cordova / PhoneGap with battery-saving "circular region monitoring" and "stop detection".
+Cross-platform **background location tracking** plugin for Cordova / PhoneGap with battery-saving "circular region monitoring" and "stop detection".
 
-Plugin can be used for geolocation when app is running in foreground or background. It is more battery and data efficient than html5 geolocation or cordova-geolocation plugin. It can be used side by side with other geolocation providers (eg. html5 navigator.geolocation).
+This plugin can be used for **background location tracking** when app is running in foreground or background. It is more battery and data efficient than html5 geolocation or cordova-geolocation plugin. It can be used side by side with other geolocation providers (eg. html5 navigator.geolocation).
 
 On Android you can choose from two location location providers:
 * **ANDROID_DISTANCE_FILTER_PROVIDER** (forked from [cordova-plugin-background-geolocation](https://github.com/christocracy/cordova-plugin-background-geolocation))
 * **ANDROID_ACTIVITY_PROVIDER**
 
-See [Which provider should I use?](https://github.com/mauron85/cordova-plugin-background-geolocation/blob/master/PROVIDERS.md) for more information about providers.
+See [Which provider should I use?](https://github.com/saralweb/cordova-plugin-background-geolocation/blob/master/PROVIDERS.md) for more information about providers.
 
-## Example Application
+## Sample Application
 
-Checkout repository [cordova-plugin-background-geolocation-example](https://github.com/mauron85/cordova-plugin-background-geolocation-example).
+Checkout sample app repository [cordova-plugin-background-geolocation-sample](https://github.com/saralweb/cordova-plugin-background-geolocation-sample).
 
 ## Submitting issues
 
-All new issues should follow instructions in [ISSUE_TEMPLATE.md](https://raw.githubusercontent.com/mauron85/cordova-plugin-background-geolocation/master/ISSUE_TEMPLATE.md).
+All new issues should follow instructions in [ISSUE_TEMPLATE.md](https://raw.githubusercontent.com/saralweb/cordova-plugin-background-geolocation/master/ISSUE_TEMPLATE.md).
 Properly filled issue report will significantly reduce number of follow up questions and decrease issue resolving time.
 Most issues cannot be resolved without debug logs. Please try to isolate debug lines related to your issue.
 Instructions how to prepare debug logs can be found in section [Debugging](#debugging).
@@ -42,15 +36,28 @@ See [MIGRATIONS.md](/MIGRATIONS.md)
 ## Installing the plugin
 
 ```
-cordova plugin add cordova-plugin-mauron85-background-geolocation
+cordova plugin add cordova-plugin-saralweb-background-geolocation
 ```
 
-Default iOS location permission prompt can be changed in your config.xml:
-```
-<plugin name="cordova-plugin-mauron85-background-geolocation">
-    <variable name="ALWAYS_USAGE_DESCRIPTION" value="This app requires background tracking enabled" />
-</plugin>
-```
+**Default iOS location permission prompt can be changed in two ways:**
+1. In your config.xml:
+    ```
+    <plugin name="cordova-plugin-saralweb-background-geolocation">
+        <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="This app requires background tracking enabled" />
+        <variable name="LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION" value="This app requires background tracking enabled" />
+        <variable name="LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION" value="Always use is required for background location tracking" />
+    </plugin>
+    ```
+
+2. Or, you can pass the following variables on plugin install:
+    * `LOCATION_ALWAYS_USAGE_DESCRIPTION`                   for `NSLocationAlwaysUsageDescription`
+    * `LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION`              for `NSLocationWhenInUseUsageDescription`
+    * `LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION`   for `NSLocationAlwaysAndWhenInUseUsageDescription`
+
+    Example:
+    ```
+    cordova plugin add cordova-plugin-saralweb-background-geolocation --variable LOCATION_ALWAYS_USAGE_DESCRIPTION="Your always usage description" --variable LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION="Your when in use usage description" --variable LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION="Your always and when in use usage description"
+    ```
 
 ## Registering plugin for Adobe® PhoneGap™ Build
 
@@ -58,7 +65,7 @@ This plugin should work with Adobe® PhoneGap™ Build without any modification.
 To register plugin add following line into your config.xml:
 
 ```
-<plugin name="cordova-plugin-mauron85-background-geolocation"/>
+<plugin name="cordova-plugin-saralweb-background-geolocation"/>
 ```
 
 NOTE: If you're using *hydration*, you have to download and reinstall your app with every new version of the plugin, as plugins are not updated.
@@ -159,7 +166,7 @@ Configure options:
 | `notificationIconColor`   | `String` optional | Android      | The accent color to use for notification. Eg. **#4CAF50**.                                                                                                                                                                                                                                                                                         |
 | `notificationIconLarge`   | `String` optional | Android      | The filename of a custom notification icon. See android quirks.                                                                                                                                                                                                                                                                                    |
 | `notificationIconSmall`   | `String` optional | Android      | The filename of a custom notification icon. See android quirks.                                                                                                                                                                                                                                                                                    |
-| `locationProvider`        | `Number`          | Android      | Set location provider **@see** [PROVIDERS.md](https://github.com/mauron85/cordova-plugin-background-geolocation/blob/master/PROVIDERS.md)                                                                                                                                                                                                          |
+| `locationProvider`        | `Number`          | Android      | Set location provider **@see** [PROVIDERS.md](https://github.com/saralweb/cordova-plugin-background-geolocation/blob/master/PROVIDERS.md)                                                                                                                                                                                                          |
 | `activityType`            | `String`          | iOS          | [AutomotiveNavigation, OtherNavigation, Fitness, Other] Presumably, this affects iOS GPS algorithm. **@see** [Apple docs](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/instp/CLLocationManager/activityType) for more information |
 | `pauseLocationUpdates`    | `Boolean`         | iOS          | Pauses location updates when app is paused (default: true)                                                                                                                                                                                                                                                                                         |
 | `url`                     | `String`          | all          | Server url where to send HTTP POST with recorded locations **@see** [HTTP locations posting](#http-locations-posting)                                                                                                                                                                                                                              |
@@ -425,7 +432,7 @@ Since the plugin uses **iOS** significant-changes API, the plugin cannot detect 
 
 ### Android
 
-On Android devices it is recommended to have a notification in the drawer (option `startForeground:true`). This gives plugin location service higher priority, decreasing probability of OS killing it. Check [wiki](https://github.com/mauron85/cordova-plugin-background-geolocation/wiki/Android-implementation) for explanation.
+On Android devices it is recommended to have a notification in the drawer (option `startForeground:true`). This gives plugin location service higher priority, decreasing probability of OS killing it. Check [wiki](https://github.com/saralweb/cordova-plugin-background-geolocation/wiki/Android-implementation) for explanation.
 
 #### Custom ROMs
 
@@ -467,7 +474,7 @@ Android 6.0 "Marshmallow" introduced a new permissions model where the user can 
 
 **NOTE:** Only available for API Level >=21.
 
-To use custom notification icons, you need to put icons into *res/drawable* directory **of your app**. You can automate the process  as part of **after_platform_add** hook configured via [config.xml](https://github.com/mauron85/cordova-plugin-background-geolocation-example/blob/master/config.xml). Check [config.xml](https://github.com/mauron85/cordova-plugin-background-geolocation-example/blob/master/config.xml) and [scripts/res_android.js](https://github.com/mauron85/cordova-plugin-background-geolocation-example/blob/master/scripts/res_android.js) of example app for reference.
+To use custom notification icons, you need to put icons into *res/drawable* directory **of your app**. You can automate the process  as part of **after_platform_add** hook configured via [config.xml](https://github.com/saralweb/cordova-plugin-background-geolocation-sample/blob/master/config.xml). Check [config.xml](https://github.com/saralweb/cordova-plugin-background-geolocation-sample/blob/master/config.xml) and [scripts/res_android.js](https://github.com/saralweb/cordova-plugin-background-geolocation-sample/blob/master/scripts/res_android.js) of sample app for reference.
 
 If you only want a single large icon, set `notificationIconLarge` to null and include your icon's filename in the `notificationIconSmall` parameter.
 

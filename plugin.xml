@@ -2,8 +2,8 @@
 
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-plugin-mauron85-background-geolocation"
-        version="2.3.1">
+        id="cordova-plugin-saralweb-background-geolocation"
+        version="2.4.0">
     <name>CDVBackgroundGeolocation</name>
     <description>Cordova Background Geolocation Plugin</description>
     <license>Apache-2.0</license>
@@ -29,41 +29,41 @@
         <framework src="android/logtofile.gradle" custom="true" type="gradleReference"/>
         <framework src="com.google.android.gms:play-services-location:+" />
         <framework src="com.android.support:support-v4:+" />
-        <source-file src="android/plugin/src/main/java/com/tenforwardconsulting/cordova/BackgroundGeolocationPlugin.java" target-dir="src/com/tenforwardconsulting/cordova"/>
-        <source-file src="android/plugin/src/main/java/com/tenforwardconsulting/bgloc/DistanceFilterLocationProvider.java" target-dir="src/com/tenforwardconsulting/bgloc"/>
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/AbstractLocationProvider.java" target-dir="src/com/marianhello/bgloc"/>
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/ActivityRecognitionLocationProvider.java" target-dir="src/com/marianhello/bgloc"/>
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/BootCompletedReceiver.java" target-dir="src/com/marianhello/bgloc"/>
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/Config.java" target-dir="src/com/marianhello/bgloc"/>
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/HttpPostService.java" target-dir="src/com/marianhello/bgloc"/>
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/LocationProvider.java" target-dir="src/com/marianhello/bgloc"/>
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/LocationProviderFactory.java" target-dir="src/com/marianhello/bgloc"/>
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/LocationService.java" target-dir="src/com/marianhello/bgloc"/>
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/ResourceResolver.java" target-dir="src/com/marianhello/bgloc"/>
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/UploadingCallback.java" target-dir="src/com/marianhello/bgloc"/>
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/data/BackgroundLocation.java" target-dir="src/com/marianhello/bgloc/data" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/data/ConfigurationDAO.java" target-dir="src/com/marianhello/bgloc/data" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/data/DAOFactory.java" target-dir="src/com/marianhello/bgloc/data" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/data/LocationDAO.java" target-dir="src/com/marianhello/bgloc/data" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/data/sqlite/SQLiteConfigurationContract.java" target-dir="src/com/marianhello/bgloc/data/sqlite" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/data/sqlite/SQLiteLocationContract.java" target-dir="src/com/marianhello/bgloc/data/sqlite" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/data/sqlite/SQLiteConfigurationDAO.java" target-dir="src/com/marianhello/bgloc/data/sqlite" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/data/sqlite/SQLiteLocationDAO.java" target-dir="src/com/marianhello/bgloc/data/sqlite" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/data/sqlite/SQLiteOpenHelper.java" target-dir="src/com/marianhello/bgloc/data/sqlite" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/sync/AccountHelper.java" target-dir="src/com/marianhello/bgloc/sync" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/sync/Authenticator.java" target-dir="src/com/marianhello/bgloc/sync" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/sync/AuthenticatorService.java" target-dir="src/com/marianhello/bgloc/sync" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/sync/BatchManager.java" target-dir="src/com/marianhello/bgloc/sync" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/sync/DummyContentProvider.java" target-dir="src/com/marianhello/bgloc/sync" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/sync/SyncAdapter.java" target-dir="src/com/marianhello/bgloc/sync" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/bgloc/sync/SyncService.java" target-dir="src/com/marianhello/bgloc/sync" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/logging/DBLogReader.java" target-dir="src/com/marianhello/logging" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/logging/LogEntry.java" target-dir="src/com/marianhello/logging" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/logging/LoggerManager.java" target-dir="src/com/marianhello/logging" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/logging/LogReader.java" target-dir="src/com/marianhello/logging" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/logging/SQLBuilder.java" target-dir="src/com/marianhello/logging" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/cordova/JSONErrorFactory.java" target-dir="src/com/marianhello/cordova" />
-        <source-file src="android/plugin/src/main/java/com/marianhello/cordova/PermissionHelper.java" target-dir="src/com/marianhello/cordova" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/cordova/BackgroundGeolocationPlugin.java" target-dir="src/com/saralweb/cordova"/>
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/DistanceFilterLocationProvider.java" target-dir="src/com/saralweb/bgloc"/>
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/AbstractLocationProvider.java" target-dir="src/com/saralweb/bgloc"/>
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/ActivityRecognitionLocationProvider.java" target-dir="src/com/saralweb/bgloc"/>
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/BootCompletedReceiver.java" target-dir="src/com/saralweb/bgloc"/>
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/Config.java" target-dir="src/com/saralweb/bgloc"/>
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/HttpPostService.java" target-dir="src/com/saralweb/bgloc"/>
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/LocationProvider.java" target-dir="src/com/saralweb/bgloc"/>
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/LocationProviderFactory.java" target-dir="src/com/saralweb/bgloc"/>
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/LocationService.java" target-dir="src/com/saralweb/bgloc"/>
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/ResourceResolver.java" target-dir="src/com/saralweb/bgloc"/>
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/UploadingCallback.java" target-dir="src/com/saralweb/bgloc"/>
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/data/BackgroundLocation.java" target-dir="src/com/saralweb/bgloc/data" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/data/ConfigurationDAO.java" target-dir="src/com/saralweb/bgloc/data" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/data/DAOFactory.java" target-dir="src/com/saralweb/bgloc/data" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/data/LocationDAO.java" target-dir="src/com/saralweb/bgloc/data" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/data/sqlite/SQLiteConfigurationContract.java" target-dir="src/com/saralweb/bgloc/data/sqlite" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/data/sqlite/SQLiteLocationContract.java" target-dir="src/com/saralweb/bgloc/data/sqlite" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/data/sqlite/SQLiteConfigurationDAO.java" target-dir="src/com/saralweb/bgloc/data/sqlite" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/data/sqlite/SQLiteLocationDAO.java" target-dir="src/com/saralweb/bgloc/data/sqlite" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/data/sqlite/SQLiteOpenHelper.java" target-dir="src/com/saralweb/bgloc/data/sqlite" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/sync/AccountHelper.java" target-dir="src/com/saralweb/bgloc/sync" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/sync/Authenticator.java" target-dir="src/com/saralweb/bgloc/sync" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/sync/AuthenticatorService.java" target-dir="src/com/saralweb/bgloc/sync" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/sync/BatchManager.java" target-dir="src/com/saralweb/bgloc/sync" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/sync/DummyContentProvider.java" target-dir="src/com/saralweb/bgloc/sync" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/sync/SyncAdapter.java" target-dir="src/com/saralweb/bgloc/sync" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/bgloc/sync/SyncService.java" target-dir="src/com/saralweb/bgloc/sync" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/logging/DBLogReader.java" target-dir="src/com/saralweb/logging" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/logging/LogEntry.java" target-dir="src/com/saralweb/logging" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/logging/LoggerManager.java" target-dir="src/com/saralweb/logging" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/logging/LogReader.java" target-dir="src/com/saralweb/logging" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/logging/SQLBuilder.java" target-dir="src/com/saralweb/logging" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/cordova/JSONErrorFactory.java" target-dir="src/com/saralweb/cordova" />
+        <source-file src="android/plugin/src/main/java/com/saralweb/cordova/PermissionHelper.java" target-dir="src/com/saralweb/cordova" />
         <source-file src="android/plugin/src/main/java/org/apache/commons/io/Charsets.java" target-dir="src/apache/commons/io" />
         <source-file src="android/plugin/src/main/java/org/apache/commons/io/input/ReversedLinesFileReader.java" target-dir="src/apache/commons/io/input" />
         <resource-file src="android/plugin/src/main/res/xml/syncadapter.xml" target="res/xml/syncadapter.xml" />
@@ -72,7 +72,7 @@
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
             <service
-                android:name="com.marianhello.bgloc.sync.SyncService"
+                android:name="com.saralweb.bgloc.sync.SyncService"
                 android:exported="true"
                 android:process=":sync">
                 <intent-filter>
@@ -82,7 +82,7 @@
                     android:resource="@xml/syncadapter" />
             </service>
             <service
-                android:name="com.marianhello.bgloc.sync.AuthenticatorService">
+                android:name="com.saralweb.bgloc.sync.AuthenticatorService">
                 <intent-filter>
                     <action android:name="android.accounts.AccountAuthenticator"/>
                 </intent-filter>
@@ -91,17 +91,17 @@
                     android:resource="@xml/authenticator" />
             </service>
             <provider
-                android:name="com.marianhello.bgloc.sync.DummyContentProvider"
+                android:name="com.saralweb.bgloc.sync.DummyContentProvider"
                 android:authorities="@string/content_authority"
                 android:exported="false"
                 android:syncable="true"/>
             <service
                 android:enabled="true"
                 android:exported="false"
-                android:name="com.marianhello.bgloc.LocationService"
+                android:name="com.saralweb.bgloc.LocationService"
                 />
             <receiver
-                  android:name="com.marianhello.bgloc.BootCompletedReceiver"
+                  android:name="com.saralweb.bgloc.BootCompletedReceiver"
                   android:enabled="true"
                   android:exported="true">
                <intent-filter>
@@ -127,7 +127,7 @@
         </config-file>
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="BackgroundGeolocation">
-                <param name="android-package" value="com.tenforwardconsulting.cordova.BackgroundGeolocationPlugin"/>
+                <param name="android-package" value="com.saralweb.cordova.BackgroundGeolocationPlugin"/>
             </feature>
         </config-file>
 
@@ -160,14 +160,26 @@
 
     <platform name="ios">
         <!-- required background modes:  App registers for location updates -->
-        <preference name="ALWAYS_USAGE_DESCRIPTION" default="This app requires background location tracking" />
+        <preference name="LOCATION_ALWAYS_USAGE_DESCRIPTION" default="This app requires background location tracking" />
+        <preference name="LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION" default="This app requires background location tracking" />
+        <preference name="LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION" default="Always use is required for background location tracking" />
+
         <config-file target="*-Info.plist" parent="NSLocationAlwaysUsageDescription">
-            <string>$ALWAYS_USAGE_DESCRIPTION</string>
+            <string>$LOCATION_ALWAYS_USAGE_DESCRIPTION</string>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="NSLocationWhenInUseUsageDescription">
+            <string>$LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION</string>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="NSLocationAlwaysAndWhenInUseUsageDescription">
+            <string>$LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION</string>
         </config-file>
 
         <config-file target="*-Info.plist" parent="UIBackgroundModes">
             <array>
                 <string>location</string>
+                <string>fetch</string>
             </array>
         </config-file>
 

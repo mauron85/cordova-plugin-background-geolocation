@@ -55,5 +55,7 @@ typedef NSUInteger BGOperationMode;
 - (BOOL) deleteLocation:(NSNumber*)locationId;
 - (BOOL) deleteAllLocations;
 - (void) onAppTerminate;
+- (void) startMonitoringLocationWhenSuspended;
+- (void) notify:(NSString*)message;
 
 @end

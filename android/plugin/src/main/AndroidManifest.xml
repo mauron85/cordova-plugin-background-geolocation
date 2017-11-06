@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.marianhello.cdvbackgroundgeolocation">
+    package="com.saralweb.cdvbackgroundgeolocation">
 
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
@@ -22,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service
-            android:name="com.marianhello.bgloc.sync.SyncService"
+            android:name="com.saralweb.bgloc.sync.SyncService"
             android:exported="true"
             android:process=":sync">
             <intent-filter>
@@ -32,7 +32,7 @@
                 android:resource="@xml/syncadapter" />
         </service>
         <service
-            android:name="com.marianhello.bgloc.sync.AuthenticatorService">
+            android:name="com.saralweb.bgloc.sync.AuthenticatorService">
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator"/>
             </intent-filter>
