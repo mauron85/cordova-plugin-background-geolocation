@@ -12,8 +12,17 @@
 
 @interface Config : NSObject
 
+enum BGDistanceFilterCalculationAlgorithm {
+    NONE = 0,
+    HALF_SPEED_SQUARED = 1 //(rounded-speed-to-nearest-5) / 2)^2
+};
+
+typedef NSUInteger BGDistanceFilterCalculationAlgorithm;
+
+
 @property NSInteger stationaryRadius;
 @property NSInteger distanceFilter;
+@property BGDistanceFilterCalculationAlgorithm distanceFilterCalculationAlgorithm;
 @property NSInteger desiredAccuracy;
 @property BOOL isDebugging;
 @property NSString* activityType;

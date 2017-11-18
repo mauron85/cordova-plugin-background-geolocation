@@ -13,7 +13,7 @@
 
 @implementation Config
 
-@synthesize stationaryRadius, distanceFilter, desiredAccuracy, isDebugging, activityType, stopOnTerminate, url, syncUrl, syncThreshold, httpHeaders, saveBatteryOnBackground, maxLocations, pauseLocationUpdates;
+@synthesize stationaryRadius, distanceFilter, distanceFilterCalculationAlgorithm, desiredAccuracy, isDebugging, activityType, stopOnTerminate, url, syncUrl, syncThreshold, httpHeaders, saveBatteryOnBackground, maxLocations, pauseLocationUpdates;
 
 -(id) init {
     self = [super init];
@@ -24,6 +24,7 @@
 
     stationaryRadius = 50;
     distanceFilter = 500;
+	distanceFilterCalculationAlgorithm = HALF_SPEED_SQUARED;
     desiredAccuracy = 100;
     isDebugging = NO;
     activityType = @"OTHER";
@@ -45,6 +46,9 @@
     }
     if (isNotNull(config[@"distanceFilter"])) {
         instance.distanceFilter = [config[@"distanceFilter"] integerValue];
+    }
+    if (isNotNull(config[@"distanceFilterCalculationAlgorithm"])) {
+        instance.distanceFilterCalculationAlgorithm = [config[@"distanceFilterCalculationAlgorithm"] unsignedIntegerValue];
     }
     if (isNotNull(config[@"desiredAccuracy"])) {
         instance.desiredAccuracy = [config[@"desiredAccuracy"] integerValue];
