@@ -34,7 +34,7 @@
 
         <framework src="android/common/logtofile.gradle" custom="true" type="gradleReference"/>
         <framework src="com.google.android.gms:play-services-location:$GOOGLE_PLAY_SERVICES_VERSION" />
-        <framework src="com.android.support:support-v4:+" />
+        <framework src="com.android.support:support-v4:24+" />
         <!-- Generated with gen_sources.sh @ 2018-02-28 19:41:25 -->
         <source-file src="android/CDVBackgroundGeolocation/src/main/java/com/marianhello/bgloc/cordova/ConfigMapper.java" target-dir="src/com/marianhello/bgloc/cordova" />
         <source-file src="android/CDVBackgroundGeolocation/src/main/java/com/tenforwardconsulting/bgloc/cordova/BackgroundGeolocationPlugin.java" target-dir="src/com/tenforwardconsulting/bgloc/cordova" />
