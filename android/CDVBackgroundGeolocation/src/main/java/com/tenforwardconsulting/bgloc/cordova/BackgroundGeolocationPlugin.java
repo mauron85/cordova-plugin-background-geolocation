@@ -66,6 +66,14 @@ public class BackgroundGeolocationPlugin extends CordovaPlugin implements Plugin
     public static final String ACTION_REGISTER_EVENT_LISTENER = "addEventListener";
     public static final String ACTION_START_TASK = "startTask";
     public static final String ACTION_END_TASK = "endTask";
+    public static Context staticContext;
+    public static Boolean hasMockLocationsEnabled() {
+        if (staticContext != null) {
+            return android.provider.Settings.Secure.getString(staticContext.getContentResolver(), android.provider.Settings.Secure.ALLOW_MOCK_LOCATION).equals("1");
+        }
+        return false;
+    }
+
 
     private static final int PERMISSIONS_REQUEST_CODE = 1;
 
@@ -86,6 +94,7 @@ public class BackgroundGeolocationPlugin extends CordovaPlugin implements Plugin
 
     public boolean execute(String action, final JSONArray data, final CallbackContext callbackContext) {
         Context context = getContext();
+        staticContext = context;
 
         if (ACTION_REGISTER_EVENT_LISTENER.equals(action)) {
             logger.debug("Registering event listeners");
