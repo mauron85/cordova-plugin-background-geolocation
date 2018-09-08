@@ -312,7 +312,8 @@ enum {
 
 - (void) showLocationSettings
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=LOCATION_SERVICES"]];
+    // NOOP - Since Apple started rejecting apps using non public url schemes
+    // https://github.com/mauron85/cordova-plugin-background-geolocation/issues/394
 }
 
 - (NSMutableDictionary*) getStationaryLocation
