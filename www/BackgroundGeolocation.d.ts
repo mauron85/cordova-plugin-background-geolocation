@@ -15,7 +15,7 @@ type AccuracyLevel = 0 | 100 | 1000 | 10000 | number;
 type LocationErrorCode = 1 | 2 | 3;
 type ServiceMode = 0 | 1;
 
-export interface ConfigureOptions {
+interface ConfigureOptions {
   /**
    * Set location provider
    *
@@ -295,7 +295,7 @@ export interface ConfigureOptions {
   postTemplate?: any;
 }
 
-export interface LocationOptions {
+interface LocationOptions {
   /**
    * Maximum time in milliseconds device will wait for location.
    */
@@ -312,7 +312,7 @@ export interface LocationOptions {
   enableHighAccuracy?: boolean;
 }
 
-export interface Location {
+interface Location {
   /** ID of location as stored in DB (or null) */
   id: number;
 
@@ -370,11 +370,11 @@ export interface Location {
   mockLocationsEnabled?: boolean;
 }
 
-export interface StationaryLocation extends Location {
+interface StationaryLocation extends Location {
   radius: number
 }
 
-export interface LocationError {
+interface LocationError {
   /**
    * Reason of an error occurring when using the geolocating device.
    *
@@ -389,12 +389,12 @@ export interface LocationError {
   message: string;
 }
 
-export interface BackgroundGeolocationError {
+interface BackgroundGeolocationError {
   code: number;
   message: string;
 }
 
-export interface Activity {
+interface Activity {
   /** Percentage indicating the likelihood user is performing this activity. */
   confidence: number;
 
@@ -407,7 +407,7 @@ export interface Activity {
   type: ActivityType;
 }
 
-export interface ServiceStatus {
+interface ServiceStatus {
   /** TRUE if service is running. */
   isRunning: boolean;
 
@@ -426,7 +426,7 @@ export interface ServiceStatus {
   authorization: AuthorizationStatus;
 }
 
-export interface LogEntry {
+interface LogEntry {
   /** ID of log entry as stored in db. */
   id: number;
 
@@ -443,11 +443,11 @@ export interface LogEntry {
   stackTrace: string;
 }
 
-export interface EventSubscription {
+interface EventSubscription {
   remove(): void;
 }
 
-export interface HeadlessTaskEvent {
+interface HeadlessTaskEvent {
   /** Name of the event [ "location", "stationary", "activity" ] */
   name: HeadlessTaskEventName;
 
@@ -889,5 +889,3 @@ interface BackgroundGeolocationPlugin {
 }
 
 declare const BackgroundGeolocation: BackgroundGeolocationPlugin;
-
-export default BackgroundGeolocation;
