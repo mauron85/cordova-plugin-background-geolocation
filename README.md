@@ -65,11 +65,13 @@ cordova plugin add @mauron85/cordova-plugin-background-geolocation \
 Or in `config.xml`:
 
 ```
-<plugin name="@mauron85/cordova-plugin-background-geolocation">
+<plugin name="cordova-plugin-mauron85-background-geolocation" spec="@mauron85/cordova-plugin-background-geolocation@~3.0.3">
   <variable name="GOOGLE_PLAY_SERVICES_VERSION" value="11+" />
-  <variable name="ANDROID_SUPPORT_LIBRARY_VERSION" value="23+" />
-  <variable name="ALWAYS_USAGE_DESCRIPTION" value="App requires background tracking enabled" />
-  <variable name="MOTION_USAGE_DESCRIPTION" value="App requires motion detection" />
+  <variable name="ANDROID_SUPPORT_LIBRARY_VERSION" value="26+" />
+  <variable name="ICON" value="@mipmap/icon" />
+  <variable name="SMALL_ICON" value="@mipmap/icon" />
+  <variable name="ALWAYS_USAGE_DESCRIPTION" value="App requires background tracking " />
+  <variable name="MOTION_USAGE_DESCRIPTION" value="App requires motion detection" /> 
 </plugin>
 ```
 
