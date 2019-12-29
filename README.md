@@ -23,7 +23,7 @@ In that case, also provide relevant parts of output of `adb logcat` command.
 # Android background service issues
 There are repeatedly reported issues with some android devices not working in the background. Check if your device model is on  [dontkillmyapp list](https://dontkillmyapp.com) before you report new issue. For more information check out [dontkillmyapp.com](https://dontkillmyapp.com/problem).
 
-Another confusing fact about Android services is concept of foreground services. Foreground service in context of Android OS is different thing than background geolocation service of this plugin (they're related thought). **Plugin's background geolocation service** actually **becomes foreground service** when app is in the background. Confusing, right? :D
+Another confusing fact about Android services is concept of foreground services. Foreground service in context of Android OS is different thing than background geolocation service of this plugin (they're related though). **Plugin's background geolocation service** actually **becomes foreground service** when app is in the background. Confusing, right? :D
 
 If service wants to continue to run in the background, it must "promote" itself to `foreground service`. Foreground services must have visible notification, which is the reason, why you can't disable drawer notification.
 
