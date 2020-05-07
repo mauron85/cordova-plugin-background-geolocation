@@ -448,12 +448,7 @@ static NSString * const TAG = @"CDVBackgroundGeolocation";
  * on UIApplicationDidFinishLaunchingNotification
  */
 -(void) onFinishLaunching:(NSNotification *)notification
-{
-    if (@available(iOS 10, *)) {
-        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        center.delegate = self;
-    }
-    
+{   
     NSDictionary *dict = [notification userInfo];
 
     MAURConfig *config = [facade getConfig];
