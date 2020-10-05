@@ -29,7 +29,7 @@ If service wants to continue to run in the background, it must "promote" itself 
 
 The notification can only be disabled, when app is running in the foreground, by setting config option `startForeground: false` (this is the default option), but will always be visible in the background (if service was started).
 
-Recommend you to read https://developer.android.com/about/versions/oreo/bac
+Recommend you to read https://developer.android.com/about/versions/oreo/background-location-limits
 
 ## Description
 
