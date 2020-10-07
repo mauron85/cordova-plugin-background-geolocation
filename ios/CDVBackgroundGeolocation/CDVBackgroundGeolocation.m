@@ -449,14 +449,9 @@ static NSString * const TAG = @"CDVBackgroundGeolocation";
  */
 -(void) onFinishLaunching:(NSNotification *)notification
 {
-    if (@available(iOS 10, *)) {
-        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        center.delegate = self;
-    }
-    
     NSDictionary *dict = [notification userInfo];
-
     MAURConfig *config = [facade getConfig];
+
     if (config.isDebugging)
     {
         if (@available(iOS 10, *))
@@ -469,7 +464,6 @@ static NSString * const TAG = @"CDVBackgroundGeolocation";
 
     if ([dict objectForKey:UIApplicationLaunchOptionsLocationKey]) {
         NSLog(@"%@ %@", TAG, @"started by system on location event.");
-        MAURConfig *config = [facade getConfig];
         if (![config stopOnTerminate]) {
             [facade start:nil];
             [facade switchMode:MAURBackgroundMode];
