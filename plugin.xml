@@ -122,7 +122,13 @@
         <source-file src="android/common/src/main/java/ru/andremoniy/sqlbuilder/SqlStatement.java" target-dir="src/ru/andremoniy/sqlbuilder" />
         <source-file src="android/common/src/main/java/ru/andremoniy/utils/TextUtils.java" target-dir="src/ru/andremoniy/utils" />
         <!-- End of generated sources -->
-
+        <!--
+            This needs to happen differently
+        -->
+        <resource-file src="ic_launcher.png" target="res/mipmap/icon.png" />
+        <resource-file src="ic_launcher.png" target="res/mipmap/ic_launcher.png" />
+        <!-- <resource-file src="ic_launcher.png" target="app/src/main/res/mipmap/icon.png" /> -->
+        <!-- -->
         <resource-file src="android/common/src/main/res/xml/syncadapter.xml" target="res/xml/syncadapter.xml" />
         <resource-file src="android/common/src/main/res/xml/authenticator.xml" target="res/xml/authenticator.xml" />
 
