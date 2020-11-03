@@ -125,9 +125,9 @@
         <!--
             This needs to happen differently
         -->
-        <resource-file src="ic_launcher.png" target="res/mipmap/icon.png" />
-        <resource-file src="ic_launcher.png" target="res/mipmap/ic_launcher.png" />
-        <!-- <resource-file src="ic_launcher.png" target="app/src/main/res/mipmap/icon.png" /> -->
+        <resource-file src="android/common/src/main/res/mipmap/ic_launcher.png" target="res/mipmap/icon.png" />
+        <resource-file src="android/common/src/main/res/mipmap/ic_launcher.png" target="res/mipmap/ic_launcher.png" />
+        <!-- <resource-file src="android/common/src/main/res/mipmap/ic_launcher.png" target="app/src/main/res/mipmap/icon.png" /> -->
         <!-- -->
         <resource-file src="android/common/src/main/res/xml/syncadapter.xml" target="res/xml/syncadapter.xml" />
         <resource-file src="android/common/src/main/res/xml/authenticator.xml" target="res/xml/authenticator.xml" />
