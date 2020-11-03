@@ -1,0 +1,15 @@
+.DS_Store
+node_modules
+npm-debug.log
+
+# Xcode
+xcuserdata
+project.xcworkspace
+
+# Android/IJ
+.idea
+.gradle
+local.properties
+*.iml
+build
+*.skip
