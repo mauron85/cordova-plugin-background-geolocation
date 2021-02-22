@@ -14,8 +14,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.text.TextUtils;
 
 import com.github.jparkie.promise.Promise;
@@ -51,11 +51,22 @@ public class BackgroundGeolocationFacade {
     public static final int SERVICE_STOPPED = 0;
     public static final int AUTHORIZATION_AUTHORIZED = 1;
     public static final int AUTHORIZATION_DENIED = 0;
-
+    // These changes and the additional PERMISSIONS_10 were taken directly from this questions comments...
+    // https://github.com/mauron85/cordova-plugin-background-geolocation/issues/688#issuecomment-647137427
+    // PERMISSIONS
     public static final String[] PERMISSIONS = {
-            Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.ACCESS_FINE_LOCATION
+      Manifest.permission.ACCESS_COARSE_LOCATION,
+      Manifest.permission.ACCESS_FINE_LOCATION
     };
+    // Add ACCESS_BACKGROUND_LOCATION to permissions array if Android 10+
+    // PERMISSIONS 10 + constant
+    public static final String[] PERMISSIONS_10 = {
+      Manifest.permission.ACCESS_COARSE_LOCATION,
+      Manifest.permission.ACCESS_FINE_LOCATION,
+      Manifest.permission.ACCESS_BACKGROUND_LOCATION
+    };
+
+    private String[] PERMISSIONSNEW = PERMISSIONS;
 
     private boolean mServiceBroadcastReceiverRegistered = false;
     private boolean mLocationModeChangeReceiverRegistered = false;
@@ -212,10 +223,17 @@ public class BackgroundGeolocationFacade {
     }
 
     public void start() {
+        // On start shift check the build version integer vs the version code
+        if(android.os.Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+            PERMISSIONSNEW = PERMISSIONS;
+        }else {
+            PERMISSIONSNEW = PERMISSIONS_10;
+        }
         logger.debug("Starting service");
 
         PermissionManager permissionManager = PermissionManager.getInstance(getContext());
-        permissionManager.checkPermissions(Arrays.asList(PERMISSIONS), new PermissionManager.PermissionRequestListener() {
+        // set the list to PERMISSIONSNEW
+        permissionManager.checkPermissions(Arrays.asList(PERMISSIONSNEW), new PermissionManager.PermissionRequestListener() {
             @Override
             public void onPermissionGranted() {
                 logger.info("User granted requested permissions");
