@@ -1,5 +1,9 @@
 ## Changelog
 
+### [3.1.1] - 2021-03-23
+### Fixed
+- fix wrong plugin id 
+
 ### [3.1.0] - 2019-09-24
 ### Fixed
 - fix package scope
